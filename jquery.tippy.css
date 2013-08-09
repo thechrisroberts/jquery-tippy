@@ -1,0 +1,89 @@
+/*
+	jquery.tippy.css
+	
+	Tippy Tooltip by Chris Roberts
+	chris@dailycross.net
+	http://croberts.me/
+*/
+
+.tippy {
+    display: none;
+}
+
+.tippy_link {
+    font-weight: normal;
+    border-bottom: 1px dotted;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.tippy_tip {
+    width: 450px;
+    height: 300px;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #888, 4px 4px 6px #888;
+
+    z-index: 10000;
+
+    font-size: 12px;
+}
+
+.tippy_header {
+    background-color: #ccc;
+    width: 440px;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.tippy_draggable {
+    cursor: move;
+}
+
+.tippy_closelink {
+    float: right; 
+    cursor: pointer;
+
+    font-size: .85em;
+    color: #444;
+    padding: 0 5px 5px 10px;
+}
+
+.tippy_noheader .tippy_closelink {
+    padding-right: 0;
+}
+
+.tippy_closelink:hover {
+    color: red;
+}
+
+.tippy_body {
+    background-color: white;
+    padding: 10px 15px 10px 15px;
+
+    width: 420px;
+    max-height: 275px;
+    overflow: auto;
+
+    border-radius: 0 0 5px 5px;
+
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+.tippy_body.tippy_noheader {
+    border-radius: 5px;
+}
+
+.tippy_body p {
+    margin-bottom: .75em;
+}
+
+.tippy_content_container {
+    display: none;
+}

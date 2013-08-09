@@ -1,0 +1,13 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #ccc;
+}
+
+.container {
+	width: 800px;
+	margin: 30px auto;
+	padding: 20px;
+	border: 1px dashed #000;
+	background-color: #fff;
+}
