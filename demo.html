@@ -4,11 +4,26 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Tippy for jQuery Examples</title>
 		
-		<script type="text/javascript" src="jquery.tippy.js"></script>
+		<link rel="stylesheet" type="text/css" href="demo.css" />
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="jquery.tippy.js"></script>
+		<link rel="stylesheet" type="text/css" href="jquery.tippy.css" />
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.tippy').tippy();
+			});
+		</script>
 	</head>
 
 	<body>
 		<section>
+			<div class="container">
+				<div class="content">
+					Hello, world! I need to <div class="tippy" data-title="fix tippy">test this thing!</div> today. Also, <div class="tippy" data-title="checkity check">the thing indeed</div> here it be.
+				</div>
+			</div>
 		</section>
 	</body>
 </html>
