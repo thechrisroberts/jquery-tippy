@@ -18,6 +18,17 @@
     display: inline-block;
 }
 
+.tippy_link img {
+    z-index: 1;
+}
+
+.tippy_swap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
 .tippy_tip {
     width: 450px;
     height: 300px;

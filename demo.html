@@ -7,12 +7,14 @@
 		<link rel="stylesheet" type="text/css" href="demo.css" />
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
 		<script src="jquery.tippy.js"></script>
 		<link rel="stylesheet" type="text/css" href="jquery.tippy.css" />
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$('.tippy').tippy({ height: 75 });
+				$('.tippy').tippy({ multitip: true, autoclose: false });
 			});
 		</script>
 	</head>
@@ -21,13 +23,15 @@
 		<section>
 			<div class="container">
 				<div class="content">
-					Hello, world! I need to <div class="tippy" data-title="fix tippy">
+					Hello, world! I need to <div class="tippy" data-title="fix tippy" data-swaptitle="break tooltips" data-draggable="true" data-width="false" data-href="http://www.cnn.com/">
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, optio sapiente omnis quos ea eligendi voluptates alias. Beatae, modi, architecto, error necessitatibus aliquam facere praesentium ipsum rem voluptas unde molestias?</div>
 						<div>Quisquam, obcaecati ratione repellendus et odio! Ad, quasi suscipit ut quibusdam! Aspernatur asperiores doloremque explicabo maiores dolorem! Repudiandae, dolorum eos suscipit eaque libero deleniti ab nobis officiis perspiciatis voluptatibus error?</div>
 						<div>Commodi, ut, illum officiis dolor labore reprehenderit aliquam blanditiis praesentium voluptas vitae ex quae modi dicta porro aut earum sed iste voluptate temporibus laborum vel laudantium quos consequatur adipisci nostrum.</div>
 						<div>Fugit, labore, delectus minima quae eaque nam aliquid sed incidunt veritatis accusantium animi cum hic eveniet facilis neque pariatur natus possimus ratione nostrum id. Alias illum quia voluptas quaerat similique.</div>
 						<div>Quia, blanditiis, consequuntur, aut nam vel vero ullam consequatur eligendi commodi soluta ipsam asperiores iusto nulla laudantium error aliquam minima? Deserunt, reiciendis cumque doloremque voluptatibus explicabo accusantium adipisci quisquam iusto.</div>
 					</div> today. Also, <div class="tippy" data-title="checkity check">the thing indeed</div> here it be.<br /><br />
+
+					<div class="tippy" data-img="http://personal.home/plugins/wp-content/uploads/2013/07/donut_thief_1.jpg" data-swapimg="http://personal.home/plugins/wp-content/uploads/2013/07/donut_thief_2.jpg" data-showtitle="false" data-title="Donut thief">This is my swap image test.</div><br /><br />
 
 					<div class="space">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, repellendus, incidunt recusandae porro aliquid id explicabo esse atque repudiandae omnis assumenda nobis ducimus voluptatibus ex dolorem rem sunt! Reprehenderit, harum!</div>
 					
