@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="http://tippy.croberts.me/includes/syntax/scripts/shCore.js"></script>
         <script type="text/javascript" src="http://tippy.croberts.me/includes/syntax/scripts/shBrushJScript.js"></script>
         <link type="text/css" rel="stylesheet" href="http://tippy.croberts.me/includes/syntax/styles/shCoreDefault.css"/>
+
         <script type="text/javascript">
         	SyntaxHighlighter.defaults['gutter'] = false;
         	SyntaxHighlighter.defaults['auto-links'] = false;
@@ -69,9 +70,9 @@
 
 				<p>There is no limit to what can go inside a Tippy tooltip: <span class="tippy" data-title="any markup will do" data-showheader="false"><b>I can hold anything</b></span>!</p>
 
-				<p>There is one gotcha on the markup. Browsers do not like to nest block-level elements. For instance, put a div inside a paragraph tag and it will get <div class="tippy" data-title="thrown out">This won't work right.</div>.</p>
+				<p>There is one gotcha: browsers do not like to nest block-level elements. Put a div inside a paragraph tag and it will be <div class="tippy" data-title="thrown out">This won't work right.</div>.</p>
 
-				<p>The answer is to use the anchor option. Add a link somewhere in your paragraph, then after your paragraph add your block-level tooltip. For instance: <a class="hold_block"></a>.</p>
+				<p>The answer is to use the anchor option. Add a link in your paragraph where you want the tooltip, give it a class name, then outside the paragraph add the tooltip. For instance: <a class="hold_block"></a>.</p>
 
 				<div class="tippy" data-anchor=".hold_block" data-title="Check me out">
 					<p>There should be no problem with this tooltip or its contents. Hopefully you can see that Tippy is:</p>
@@ -81,6 +82,20 @@
 						<li>Powerful</li>
 					</ul>
 				</div>
+
+				<pre class="brush: js;">
+				<p>
+					The answer is to use the anchor option. Add a link in your paragraph where you want the tooltip, give it a class name, then outside the paragraph add the tooltip. For instance: <a class="tooltip_anchor"></a>.
+				</p>
+
+				<div class="tooltip" data-anchor=".tooltip_anchor" data-title="Check me out">
+					<p>There should be no problem with this tooltip or its contents. Hopefully you can see that Tippy is:</p>
+					<ul>
+						<li>Simple</li>
+						<li>Flexible</li>
+						<li>Powerful</li>
+					</ul>
+				</div></pre>
 
 				<p>Here are all of the options available with Tippy. If a default is set, it is shown in parenthesis. If multiple values are possible, they are all listed with the default shown first. Some options only make sense if set globally; those are marked with *.</p>
 
