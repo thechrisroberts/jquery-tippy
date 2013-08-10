@@ -2,9 +2,19 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Tippy for jQuery Examples</title>
+		<title>Tippy for jQuery Demo</title>
 		
 		<link rel="stylesheet" type="text/css" href="demo.css" />
+
+		<script type="text/javascript" src="http://tippy.croberts.me/includes/syntax/scripts/shCore.js"></script>
+        <script type="text/javascript" src="http://tippy.croberts.me/includes/syntax/scripts/shBrushJScript.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://tippy.croberts.me/includes/syntax/styles/shCoreDefault.css"/>
+        <script type="text/javascript">
+        	SyntaxHighlighter.defaults['gutter'] = false;
+        	SyntaxHighlighter.defaults['auto-links'] = false;
+        	SyntaxHighlighter.defaults['toolbar'] = false;
+        	SyntaxHighlighter.all();
+        </script>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -14,7 +24,7 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$('.tippy').tippy({ multitip: true, autoclose: false });
+				$('.tippy').tippy({ showtitle: false });
 			});
 		</script>
 	</head>
@@ -22,97 +32,129 @@
 	<body>
 		<section>
 			<div class="container">
-				<div class="content">
-					Hello, world! I need to <div class="tippy" data-title="fix tippy" data-swaptitle="break tooltips" data-draggable="true" data-width="false" data-href="http://www.cnn.com/">
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, optio sapiente omnis quos ea eligendi voluptates alias. Beatae, modi, architecto, error necessitatibus aliquam facere praesentium ipsum rem voluptas unde molestias?</div>
-						<div>Quisquam, obcaecati ratione repellendus et odio! Ad, quasi suscipit ut quibusdam! Aspernatur asperiores doloremque explicabo maiores dolorem! Repudiandae, dolorum eos suscipit eaque libero deleniti ab nobis officiis perspiciatis voluptatibus error?</div>
-						<div>Commodi, ut, illum officiis dolor labore reprehenderit aliquam blanditiis praesentium voluptas vitae ex quae modi dicta porro aut earum sed iste voluptate temporibus laborum vel laudantium quos consequatur adipisci nostrum.</div>
-						<div>Fugit, labore, delectus minima quae eaque nam aliquid sed incidunt veritatis accusantium animi cum hic eveniet facilis neque pariatur natus possimus ratione nostrum id. Alias illum quia voluptas quaerat similique.</div>
-						<div>Quia, blanditiis, consequuntur, aut nam vel vero ullam consequatur eligendi commodi soluta ipsam asperiores iusto nulla laudantium error aliquam minima? Deserunt, reiciendis cumque doloremque voluptatibus explicabo accusantium adipisci quisquam iusto.</div>
-					</div> today. Also, <div class="tippy" data-title="checkity check">the thing indeed</div> here it be.<br /><br />
+				<a href="https://github.com/thechrisroberts/jquery-tippy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-					<div class="tippy" data-img="http://personal.home/plugins/wp-content/uploads/2013/07/donut_thief_1.jpg" data-swapimg="http://personal.home/plugins/wp-content/uploads/2013/07/donut_thief_2.jpg" data-showtitle="false" data-title="Donut thief">This is my swap image test.</div><br /><br />
+				<h1>Tippy for jQuery</h1>
+				<h3>Created by <a href="http://croberts.me/" title="Chris Roberts">Chris Roberts</a></h3><br />
 
-					<div class="space">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, repellendus, incidunt recusandae porro aliquid id explicabo esse atque repudiandae omnis assumenda nobis ducimus voluptatibus ex dolorem rem sunt! Reprehenderit, harum!</div>
-					
-					<div class="space">Temporibus, voluptatibus, eaque, iusto quas rerum qui obcaecati laborum vero dolorum tempore magnam earum veritatis perferendis nostrum eius asperiores libero suscipit quo quis molestiae error tempora provident sunt soluta ipsum.</div>
-					
-					<div class="space">Illum, ullam, totam, at blanditiis dolores omnis quidem incidunt ad laudantium nam temporibus maxime magni harum quaerat maiores rerum nostrum doloremque sit nisi fuga dolorum consequuntur provident delectus reiciendis qui.</div>
-					
-					<div class="space">Fuga, fugit, sed quos sapiente soluta totam corrupti autem alias asperiores ipsum aspernatur iste impedit dolores libero dicta modi itaque ipsa sunt suscipit cum deserunt perspiciatis praesentium ullam reiciendis error!</div>
-					
-					<div class="space">Veniam, doloremque expedita consequuntur deleniti est quam cum eveniet natus dicta in ipsam vitae officia ullam numquam aliquid asperiores deserunt rem ducimus quia repellendus sint! Numquam, repellat repudiandae velit ab!</div>
-					
-					<div class="space">Aliquam, explicabo, harum eligendi ullam unde magnam quia perspiciatis vel ducimus repellat odio iusto consectetur deserunt fuga saepe sed optio. Numquam, cum, facere deleniti minima quo ducimus animi cumque provident.</div>
-					
-					<div class="space">Culpa iure molestiae officia. Voluptatum, culpa, iure, fugit placeat non doloremque laboriosam quam minus hic accusamus eum cupiditate explicabo blanditiis minima nostrum molestias vitae quas soluta corporis atque officia omnis.</div>
-					
-					<div class="space">Voluptatum, consectetur, minus quaerat in odit eveniet perspiciatis eaque dolorum velit mollitia ipsam et reiciendis cum beatae cumque a alias facere nemo repellat aperiam modi iure natus totam quibusdam exercitationem.</div>
-					
-					<div class="space">Debitis, sunt, corporis, harum quisquam dolores ex incidunt asperiores aliquam minima fuga qui commodi facere quo sapiente maiores quidem est nulla? Temporibus, quis, magni minus aut voluptas facere eius. Nobis.</div>
-					
-					<div class="space">Tempore necessitatibus totam sunt fuga unde facere dolores provident omnis? Maxime, quasi quo saepe rem ducimus alias numquam quibusdam doloribus deserunt ad! Amet, ipsum officiis libero quo odio quisquam quos!</div>
-					
-					<div class="space">Modi, beatae, ut, dolor voluptate nam dolorum voluptates tempore maiores magnam recusandae perferendis eligendi obcaecati dolore architecto quas ratione voluptatem quidem sequi a rerum. Repellendus, minus atque et iste ut.</div>
-					
-					<div class="space">Minima, sequi, quos illum est nulla debitis accusamus placeat eaque qui aliquid mollitia nemo magnam modi adipisci optio veritatis delectus necessitatibus totam dolorem dolore incidunt et consequatur vitae tenetur sint.</div>
-					
-					<div class="space">Autem, asperiores, nesciunt, commodi, ducimus id sequi eius repellendus enim adipisci neque accusamus quo sapiente facere saepe cupiditate sit et rem eligendi magnam natus distinctio voluptatibus sunt. Quia, vero, modi.</div>
-					
-					<div class="space">Quisquam, ab, iste molestias accusamus reprehenderit soluta nulla enim odio officia itaque accusantium mollitia veniam similique odit incidunt et quo autem. Ipsum quasi sequi dignissimos necessitatibus unde adipisci quod. Quia!</div>
-					
-					<div class="space">Mollitia, possimus, ducimus, aspernatur debitis modi quam nulla ab cum quo blanditiis sint delectus explicabo quibusdam aut nobis vel provident optio dolorem. Placeat, in itaque dicta facilis ipsa illo asperiores.</div>
-					
-					<div class="space">Sed, fuga, aliquam, totam ratione veniam a sint id doloribus nemo numquam cumque sapiente labore et ad aliquid. Vel, qui saepe eum in quis consectetur optio autem nobis sunt fugit!</div>
-					
-					<div class="space">Alias, et, iure, commodi repudiandae voluptates ipsam earum voluptatum nulla maiores saepe soluta reiciendis veniam culpa. Optio, labore, aliquid tenetur quibusdam dignissimos consectetur quas eum dolore. Temporibus eligendi non animi.</div>
-					
-					<div class="space">Nihil, labore, in, pariatur cumque impedit ipsa ipsam corrupti ex veritatis perferendis sunt facilis laboriosam et dolores suscipit sapiente ad facere culpa odit quisquam quas distinctio consequuntur laudantium nam tempora.</div>
-					
-					<div class="space">Reiciendis, delectus recusandae perferendis quam placeat consequatur aspernatur magnam repellendus cum pariatur inventore alias quisquam atque ipsa cupiditate dolorum dolor autem architecto quaerat fugit soluta corporis aperiam. Nobis, pariatur, similique?</div>
-					
-					<div class="space">Obcaecati, totam, et, accusantium alias voluptate quisquam laborum nesciunt aut consectetur at dolores aspernatur possimus pariatur eius adipisci expedita nihil! Nihil ducimus porro totam ad dolorem mollitia sed architecto accusantium.</div>
-					
-					<div class="space">Consequatur, consequuntur, deserunt, sapiente, maxime blanditiis ipsa voluptas cumque corporis a reiciendis architecto quasi. Minus, asperiores, vitae commodi vel illo fugiat id totam magnam incidunt sint veniam consequatur quisquam et!</div>
-					
-					<div class="space">Similique, possimus maiores nihil consectetur asperiores ea totam autem ipsam quod dicta. Accusantium sed ex itaque doloribus ad laborum alias adipisci nisi voluptas laudantium? Quos, saepe exercitationem placeat adipisci aperiam.</div>
-					
-					<div class="space">Placeat, facilis, suscipit, et molestiae sequi laborum quia necessitatibus molestias consequatur ad aperiam praesentium veritatis veniam adipisci excepturi aliquam quo reprehenderit quos dolor commodi iusto laudantium ea harum enim voluptatem!</div>
-					
-					<div class="space">Quam nam pariatur cumque fugit eum hic assumenda. Voluptas, explicabo recusandae quod obcaecati voluptatibus quae delectus facere officiis. Impedit, dicta, voluptates doloribus maxime temporibus ducimus ipsum magni ullam dolore voluptas.</div>
-					
-					<div class="space">Iste, fuga, atque porro quasi quaerat modi vero tenetur. Reprehenderit, eligendi, amet enim minus vel fugit natus esse accusantium rerum voluptates sed labore iste voluptatum id in sit officia nemo.</div>
-					
-					<div class="space">Architecto, voluptatum, beatae dolorum et dicta aliquam eveniet distinctio vitae inventore numquam magnam sequi ex ad tenetur aut sapiente necessitatibus accusamus odit tempora vel! Numquam voluptates dicta molestias ipsam odio!</div>
-					
-					<div class="space">Aliquam, minima, sequi, error, sint aliquid corporis expedita nostrum vero pariatur tempore qui nulla ipsum saepe necessitatibus consequatur modi reiciendis architecto porro nisi quas nesciunt numquam repudiandae assumenda voluptates iure?</div>
-					
-					<div class="space">Soluta, obcaecati, adipisci, ex ducimus omnis error dolore voluptatibus laboriosam eligendi laborum porro esse magnam fuga mollitia rerum libero et? Aperiam officiis esse incidunt ipsam quis expedita mollitia corrupti quia.</div>
-					
-					<div class="space">Perferendis, neque, aut, veniam quia ipsum ipsam harum assumenda quisquam maxime quasi voluptas vitae officiis commodi! Nostrum, dicta, quos ducimus saepe voluptatibus vel dolores repudiandae placeat quo perferendis consequuntur facere?</div>
-					
-					<div class="space">Repellendus, voluptas earum pariatur veritatis hic eveniet fuga cum asperiores velit quos enim vero beatae mollitia deserunt placeat necessitatibus fugit! Exercitationem, molestiae quo voluptatibus blanditiis odio nesciunt voluptates accusantium iure?</div>
-					
-					<div class="space">Eligendi, voluptatibus ratione id voluptatem repudiandae sapiente esse non sed numquam fuga aliquid cumque enim nesciunt et ex minima obcaecati repellendus. Quasi, voluptatem necessitatibus aliquam doloribus consectetur harum quos qui?</div>
-					
-					<div class="space">Voluptate, deserunt, sunt, qui porro delectus rerum explicabo voluptatum hic totam velit reprehenderit dolor vero quis expedita sit molestiae nostrum officia voluptas id repellat distinctio ad adipisci. Voluptate, nisi dicta!</div>
-					
-					<div class="space">Quisquam, tempora, iure, fugiat delectus harum nemo dolor quasi officiis animi ipsum rerum quo. Consequatur, possimus, laboriosam, fugiat distinctio architecto nihil harum molestias quia laudantium asperiores tenetur voluptatibus veniam neque?</div>
-					
-					<div class="space">Doloremque, blanditiis, quis, explicabo, labore ipsa quam accusantium sed delectus provident dolorum cumque aliquid modi consequuntur. Nihil, impedit, nostrum doloremque incidunt alias sunt quis repellendus aliquam obcaecati explicabo. Saepe, perferendis.</div>
-					
-					<div class="space">Cum, commodi, numquam, harum, distinctio unde veritatis sunt impedit officiis iusto aperiam dolor alias ullam voluptate possimus laborum nihil est quae aliquam et voluptates! Tenetur, quasi nisi culpa reiciendis ullam?</div>
-					
-					<div class="space">Libero unde quos hic porro minus mollitia laborum quibusdam. Modi, esse, placeat, ipsum, sed architecto fuga est praesentium voluptate ex expedita aperiam numquam animi consequuntur repellendus quos mollitia sequi dolorem.</div>
-					
-					<div class="space">Quasi nihil alias ratione corporis vero! Totam, nemo ducimus unde doloribus fugit quod vero eaque fugiat optio aut similique facere voluptate a accusamus adipisci laudantium expedita sed cumque accusantium ipsum.</div>
-					
-					<div class="space">Explicabo, officiis, enim, fuga voluptas voluptatem asperiores a suscipit dolores laborum eaque modi culpa quam vero assumenda praesentium pariatur sapiente nihil cupiditate ipsa dignissimos at ullam esse molestiae tempora incidunt.</div>
-					
-					<div class="space">Quasi, dolores, iure, veniam enim unde temporibus tenetur porro ullam provident ut atque voluptatem voluptate maiores. Quaerat, asperiores, fugiat. Facilis, autem numquam nostrum animi delectus corrupti ut mollitia doloremque veniam.</div>
-					
-					<div class="space">Voluptates, quisquam, reprehenderit, exercitationem, veritatis amet ipsam laboriosam minus laborum ut aut dicta alias architecto error optio laudantium impedit quidem? Repudiandae ab corporis velit alias dolores praesentium perspiciatis veniam molestiae.</div>
+				<p>
+					<a href="https://github.com/thechrisroberts/jquery-tippy" title="Tippy for jQuery">Project Page</a><br />
+					<a href="http://tippy.croberts.me/jquery-tippy-1.0.zip" title="Download Tippy">Download</a><br />
+				</p>
+
+				<p>Tippy makes it very easy to create <span class="tippy" data-title="simple" data-showheader="false">This is quite easy.</span>, <span class="tippy" data-title="flexible" data-showheader="false">Still easy.</span>, and <span class="tippy" data-title="powerful" data-headertitle="Powerful Tooltips" data-draggable="true">There are many ways to configure this thing, and all are easy!</span> tooltips for any website using jQuery.</p>
+
+				<p>Tippy is highly customizable with default options carefully configured to make it easy for anyone to get started while being fully customizable both globally and per-tooltip. Set <span class="tippy" data-title="one tooltip" data-showheader="false">The header should be missing, but you should still see a close link.</span> to have no header while <span class="tippy" data-title="another tooltip" data-showclose="false">The header is present, but there is no close link.</span> hides the close link. Everything can be customized according to your needs.</p>
+				
+				<p>Tooltips can be wrapped in any element and options are specified using the html5 data containers. Here's a <span class="tippy" data-title="simple example">I don't do much.</span>.</p>
+				
+				The JavaScript:
+				<pre class="brush: js;">
+				$(document).ready(function() {
+					$('.tooltip').tippy();
+				});</pre>
+
+				The HTML:
+				<pre class="brush: js;"><span class="tooltip" data-title="simple example">I don't do much.</span></pre>
+
+				<p>Be sure to note the way the option is set inline. Below you will find a list of all available options. These options can be passed to Tippy as an object when it is first called, but if you set the option inline it needs to be in the format data-optionname. Here's another JavaScript example showing a few global options being set:</p>
+
+				<pre class="brush: js;">$('.tooltip').tippy({ showheader: false, autoclose: false, draggable: true });</pre>
+
+				<p>To do that one inline, the html would look like:</p>
+
+				<pre class="brush: js;"><span class="tooltip" data-title="simple example" data-showheader="false" data-autoclose="false" data-draggable="true">This is my nifty tooltip.</span></pre>
+
+				<p>That would produce <span class="tippy" data-title="this tooltip" data-showheader="false" data-autoclose="false" data-draggable="true">This is my nifty tooltip. Notice that you can drag me around. Click the close button to the right when you are through with me.</span>.</p>
+
+				<p>There is no limit to what can go inside a Tippy tooltip: <span class="tippy" data-title="any markup will do" data-showheader="false"><b>I can hold anything</b></span>!</p>
+
+				<p>There is one gotcha on the markup. Browsers do not like to nest block-level elements. For instance, put a div inside a paragraph tag and it will get <div class="tippy" data-title="thrown out">This won't work right.</div>.</p>
+
+				<p>The answer is to use the anchor option. Add a link somewhere in your paragraph, then after your paragraph add your block-level tooltip. For instance: <a class="hold_block"></a>.</p>
+
+				<div class="tippy" data-anchor=".hold_block" data-title="Check me out">
+					<p>There should be no problem with this tooltip or its contents. Hopefully you can see that Tippy is:</p>
+					<ul>
+						<li>Simple</li>
+						<li>Flexible</li>
+						<li>Powerful</li>
+					</ul>
 				</div>
+
+				<p>Here are all of the options available with Tippy. If a default is set, it is shown in parenthesis. If multiple values are possible, they are all listed with the default shown first. Some options only make sense if set globally; those are marked with *.</p>
+
+				<ul>
+					<li><div class="option">*multitip <span class="default">(false/true)</span></div>: If true, multiple tooltips can be displayed at once.</li>
+					<li><div class="option">showtitle <span class="default">(false/true)</span></div>: Whether or not to use the title attribute in links. Good for accessibility, bad for visibility.</li>
+					<li><div class="option">hoverpopup <span class="default">(true/false)</span></div>: If true, tooltip displays when hovering over the link. If false, tooltip displays when the link is clicked.</li>
+					<li><div class="option">showdelay <span class="default">(100)</span></div>: Adds a slight delay before displaying the tooltip to prevent popping up tooltips when the mouse moves across the page.</li>
+					<li><div class="option">showspeed <span class="default">(200)</span></div>: How long it takes in ms for the tooltip to fade in.</li>
+					<li><div class="option">hidespeed <span class="default">(200)</span></div>: How long it takes in ms for the tooltip to fade out.</li>
+					<li><div class="option">autoclose <span class="default">(true/false)</span></div>: Whether or not the tooltip should automatically close after a delay.</li>
+					<li><div class="option">hidedelay <span class="default">(1000)</span></div>: How long it takes in ms before the tooltip begins to auto fade out.</li>
+					<li><div class="option">container</div>: By default, the tooltip is placed in the DOM right where you set it but if you want to use Tippy for specific positioning, you can change its parent element by specifying a CSS selector here.</li>
+					<li><div class="option">position <span class="default">('link/mouse/css position value')</span></div>: Specifies where the tooltip should be positioned. If set to link or mouse, the x and y values are automatically determined.</li>
+					<li><div class="option">top</div>: Useful when position set to fixed, absolute, or relative.</li>
+					<li><div class="option">bottom</div>: Useful when position set to fixed, absolute, or relative.</li>
+					<li><div class="option">left</div>: Useful when position set to fixed, absolute, or relative.</li>
+					<li><div class="option">right</div>: Useful when position set to fixed, absolute, or relative.</li>
+					<li><div class="option">offsetx <span class="default">(10)</span></div>: Set a default horizontal offset for the tooltip position. Useful when position set to link or mouse.</li>
+					<li><div class="option">offsety <span class="default">(10)</span></div>: Set a default vertical offset for the tooltip position. Useful when position set to link or mouse.</li>
+					<li><div class="option">width</div>: Specify a width for the tooltip. The default is set in jquery.tippy.css.</li>
+					<li><div class="option">height</div>: Specify a height for the tooltip. The default is set in jquery.tippy.css.</li>
+					<li><div class="option">draggable <span class="default">(false/true)</span></div>: Allow visitors to drag the tooltip around. Useful when autoclose is false. Requires jQuery UI.</li>
+					<li><div class="option">dragheader <span class="default">(true/false)</span></div>: If dragging is enabled, sets if dragging should only happen from the tooltip header or if the whole tooltip is draggable.</li>
+					<li><div class="option">anchor</div>: Optional CSS selector specifying the link element that will trigger Tippy.</li>
+					<li><div class="option">title</div>: Sets the text shown on the link and in the header.</li>
+					<li><div class="option">swaptitle</div>: Alternate title to use when the visitor hovers over the link.</li>
+					<li><div class="option">img</div>: Tippy can be used with images rather than text; set img to the url of an image to display Tippy on an image.</li>
+					<li><div class="option">swapimg</div>: Like swaptitle, swapimg switches to an alternate image when a visitor hovers over the link.</li>
+					<li><div class="option">href</div>: If href is set, the Tippy link will point to this url.</li>
+					<li><div class="option">target</div>: Specifies the link target for the Tippy link.</li>
+					<li><div class="option">showheader <span class="default">(true/false)</span></div>: Whether or not the tooltip should show a header.</li>
+					<li><div class="option">headertitle</div>: By default, the header is set to the tooltip title. With headertitle, you can set specific text for the title.</li>
+					<li><div class="option">headerhref</div>: If headerhref is set, the tooltip header text will be a link pointing to this url.</li>
+					<li><div class="option">showclose <span class="default">(true/false)</span></div>: Whether or not the tooltip have a close link. Usefor for mobile devices or when autoclose is false.</li>
+					<li><div class="option">closetext <span class="default">('close')</span></div>: The text to display for the close link.</li>
+				</ul>
+				
+				<h2>Examples</h2>
+
+				<h3>swaptitle</h3>
+				<p>Using a title with a swaptitle <span class="tippy" data-title="is easy" data-swaptitle="see? Easy." data-showheader="false">Mouse on and off and watch the text swap around.</span>.</p>
+
+				<pre class="brush: js;"><span class="tooltip" data-title="is easy" data-swaptitle="see? Easy." data-showheader="false">Mouse on and off and watch the text swap around.</span></pre>
+
+				<h3>img and swapimg</h3>
+				<p>Use tippy with an image and a swapimg:</p>
+
+				<p><span class="tippy" data-img="http://tippy.croberts.me/images/donut_thief_1.jpg" data-swapimg="http://tippy.croberts.me/images/donut_thief_2.jpg" data-headertitle="Check out the cute donut thief">She loves her donuts!</span></p>
+
+				<pre class="brush: js;"><span class="tooltip" data-img="http://tippy.croberts.me/images/donut_thief_1.jpg" data-swapimg="http://tippy.croberts.me/images/donut_thief_2.jpg" data-headertitle="Check out the cute donut thief">She loves her donuts!</span></pre>
+
+				<h3>Positioning</h3>
+				<p>The positioning options of Tippy are really powerful. Say you <span class="tippy" data-title="want a tooltip" data-headertitle="A fixed tooltip" data-position="fixed" data-top="40" data-right="40" data-autoclose="false">Help! I'm stuck in place!</span> that opens in a fixed position somewhere on your page. Tippy makes it easy.</p>
+
+				<pre class="brush: js;"><span class="tooltip" data-title="want a tooltip" data-headertitle="A fixed tooltip" data-position="fixed" data-top="40" data-right="40" data-autoclose="false">Help! I'm stuck in place!</span></pre>
+
+				<h3>Containers</h3>
+				<p>Let's get fancy with positioning. What if you have a div and you always want your tooltips to display in that div? Not a problem. Let's make our div:</p>
+
+				<div class="tooltip_container" style="width: 200px; height: 200px; border: 1px dotted #000; margin: 15px auto;"></div>
+
+				<pre class="brush: js;"><div class="tooltip_container" style="position: relative; width: 200px; height: 200px; border: 1px dotted #000; margin: 15px auto;"></div></pre>
+
+				Now we need a <span class="tippy" data-title="tooltip to put in it" data-container=".tooltip_container" data-showheader="false" data-showclose="false" data-position="relative" data-top="2" data-left="2" data-width="195" data-height="174">
+					<p>We will only show up in the nifty box we made for tooltips.</p>
+					<p>Since you can add classes to tooltips, you can define special styling for the tips that go in containers.</p>
+				</span>.
+
+				<pre class="brush: js;">
+				<span class="tooltip" data-title="tooltip to put in it" data-container=".tooltip_container" data-showheader="false" data-showclose="false" data-position="relative" data-top="2" data-left="2" data-width="195" data-height="174">
+					<p>We will only show up in the nifty box we made for tooltips.</p>
+					<p>Since you can add classes to tooltips, you can define special styling for the tips that go in containers.</p>
+				</span></pre>
 			</div>
 		</section>
 	</body>

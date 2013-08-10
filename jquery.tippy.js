@@ -1,3 +1,35 @@
+/*
+ * jQuery Tippy
+ * Version 1.0
+ * By Chris Roberts, chris@dailycross.net
+ * http://croberts.me/
+ *
+ */
+
+/*
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2013 Chris Roberts
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
+
 (function($) {
 	$.fn.tippy = function(options) {
 		// Track data for each of our tooltips
@@ -25,12 +57,32 @@
 			// Grab data values
 			tippy_state[tipId].options = $.extend({}, opts, $(this).data());
 
+			// Make sure the data container is hidden
+			$(this).hide();
+
+			// Set the id to our data container
 			$(this).attr('id', tipId);
 			
 			// Create the link that will trigger the tooltip.
-			var tippyLink = $('<a></a>')
-							 .addClass('tippy_link')
-							 .attr('id', tipId + '_link');
+			var tippyLink;
+
+			// See if we are attaching the tooltip to an already-existing anchor or if we're creating a new link
+			if (typeof tippy_state[tipId].options.anchor != 'undefined') {
+				tippyLink = $(tippy_state[tipId].options.anchor);
+			} else {
+				tippyLink = $('<a></a>');
+			}
+			
+			tippyLink.addClass('tippy_link')
+				.attr('id', tipId + '_link');
+
+			if (typeof tippy_state[tipId].options.class != 'undefined') {
+				tippyLink.addClass(tippy_state[tipId].options.class)
+			}
+
+			if (typeof tippy_state[tipId].options.name != 'undefined') {
+				tippyLink.attr('name', tippy_state[tipId].options.name)
+			}
 
 			if (tippy_state[tipId].options.showtitle) {
 				tippyLink.attr('title', tippy_state[tipId].options.title);
@@ -65,13 +117,17 @@
 				tippyLink.html(tippy_state[tipId].options.title);
 			}
 
-			if (typeof tippy_state[tipId].options.title == 'undefined') {
+			if (typeof tippy_state[tipId].options.title == 'undefined' && typeof tippy_state[tipId].options.headertitle == 'undefined') {
 				tippy_state[tipId].options.showheader = false;
 			}
 
 			// Check for a link
 			if (typeof tippy_state[tipId].options.href != 'undefined') {
 				tippyLink.attr('href', tippy_state[tipId].options.href);
+
+				if (typeof tippy_state[tipId].options.target != 'undefined') {
+					tippyLink.attr('target', tippy_state[tipId].options.target);
+				}
 			}
 
 			if (tippy_state[tipId].options.hoverpopup) {
@@ -86,7 +142,10 @@
 				});
 			}		 
 
-			$(this).before(tippyLink);
+			if (typeof tippy_state[tipId].options.anchor == 'undefined') {
+				$(this).before(tippyLink);
+			}
+
 			tippy_state[tipId].link = tippyLink;
 		});
 
@@ -103,6 +162,10 @@
 				.addClass('tippy_tip')
 				.attr('id', tipId + '_box')
 				.mouseover(function() { freezeTooltip(tipId); });
+
+			if (typeof tippy_state[tipId].options.class != 'undefined') {
+				tipBox.addClass(tippy_state[tipId].options.class + '_tip')
+			}
 
 			switch (tippy_state[tipId].options.position) {
 				case 'link':
@@ -123,9 +186,31 @@
 			if (tippy_state[tipId].options.showheader) {
 				tipHeader = $('<div></div>')
 					.css('height', 'auto')
-					.addClass('tippy_header')
-					.html(tippy_state[tipId].options.title)
-					.appendTo(tipBox);
+					.addClass('tippy_header');
+				
+				var headerTitle;
+				if (typeof tippy_state[tipId].options.headertitle != 'undefined') {
+					headerTitle = tippy_state[tipId].options.headertitle;
+				} else {
+					headerTitle = tippy_state[tipId].options.title;
+				}
+
+				if (typeof tippy_state[tipId].options.headerhref != 'undefined') {
+					var headerLink = $('<a></a>')
+						.attr('href', tippy_state[tipId].options.headerhref)
+						.attr('title', headerTitle)
+						.html(headerTitle);
+
+					if (typeof tippy_state[tipId].options.target != 'undefined') {
+						headerLink.attr('target', tippy_state[tipId].options.target);
+					}
+
+					tipHeader.append(headerLink);
+				} else {
+					tipHeader.html(headerTitle);
+				}
+
+				tipHeader.appendTo(tipBox);
 			}
 			
 			// Set up the tooltip body
@@ -174,6 +259,10 @@
 
 				tipBox.css('width', tippy_state[tipId].options.width + 'px');
 				tipBody.css('width', (tippy_state[tipId].options.width - bodyDiff) + 'px');
+			}
+
+			if (typeof tippy_state[tipId].options.bodystyle != 'undefined') {
+				tipBody.attr('style', tipBody.attr('style') + ' ' + tippy_state[tipId].options.bodystyle);
 			}
 
 			if (tippy_state[tipId].options.draggable) {
@@ -243,8 +332,24 @@
 				tipXloc = tippy_positions.curPageX;
 				tipYloc = tippy_positions.curPageY;
 			} else {
-				tipXloc = tippy_state[tipId].options.posx;
-				tipYloc = tippy_state[tipId].options.posy;
+				// Check our top/bottom and left/right values; use 0 as a default if something is missing from each pair.
+				if (typeof tippy_state[tipId].options.top == 'undefined' && typeof tippy_state[tipId].options.bottom == 'undefined') {
+					tipYloc = 0;
+				} else if (typeof tippy_state[tipId].options.top != 'undefined') {
+					tipYloc = tippy_state[tipId].options.top;
+				} else {
+					tipVertSide = "bottom"
+					tipYloc = tippy_state[tipId].options.bottom;
+				}
+
+				if (typeof tippy_state[tipId].options.left == 'undefined' && typeof tippy_state[tipId].options.right == 'undefined') {
+					tipXloc = 0;
+				} else if (typeof tippy_state[tipId].options.left != 'undefined') {
+					tipXloc = tippy_state[tipId].options.left;
+				} else {
+					tipHorSide = "right"
+					tipXloc = tippy_state[tipId].options.right;
+				}
 			}
 
 			// Check offsets if position is link or mouse
@@ -286,16 +391,27 @@
 			}
 
 			// Are we already showing the tooltip? Freeze it.
-			if (tippy_state[tipId].state == 'showing') {
+			if (tippy_state[tipId].state == 'showing' || tippy_state[tipId].state == 'displaying') {
 				// Nothing to freeze if we're not autoclosing
 				if (tippy_state[tipId].options.autoclose) {
 					freezeTooltip(tipId);
 				}
 			} else {
-				tippy_state[tipId].state = 'showing';
+				tippy_state[tipId].state = 'displaying';
 				positionTip(tipId, event);
 
 				tippy_state[tipId].timer = setTimeout(function() {
+					tippy_state[tipId].state = 'showing';
+
+					// Check on a swapimg/swaptitle to use if img/title is set
+					if (typeof tippy_state[tipId].options.swapimg != 'undefined' && typeof tippy_state[tipId].options.img != 'undefined') {
+						console.log("Swapping?");
+						// If we have a swapimg, just fade it in.
+						tippy_state[tipId].swapimg.fadeIn();
+					} else if (typeof tippy_state[tipId].options.swaptitle != 'undefined' && typeof tippy_state[tipId].options.title != 'undefined') {
+						tippy_state[tipId].link.html(tippy_state[tipId].options.swaptitle);
+					}
+
 					if (!tippy_state[tipId].options.multitip && tippy_showing) {
 						doHideTooltip(tippy_showing);
 					}
@@ -304,23 +420,20 @@
 					tippy_showing = tipId;
 				}, tippy_state[tipId].options.showdelay);
 			}
-
-			// Check on a swapimg/swaptitle to use if img/title is set
-			if (typeof tippy_state[tipId].options.swapimg != 'undefined' && typeof tippy_state[tipId].options.img != 'undefined') {
-				// If we have a swapimg, just fade it in.
-				tippy_state[tipId].swapimg.fadeIn();
-			} else if (typeof tippy_state[tipId].options.swaptitle != 'undefined' && typeof tippy_state[tipId].options.title != 'undefined') {
-				tippy_state[tipId].link.html(tippy_state[tipId].options.swaptitle);
-			}
 		}
 
 		// When the visitor mouses away from the link or the tooltip, start a timer that
 		// will hide the tooltip after a set period of time.
 		function hideTooltip(tipId)
 		{
-			tippy_state[tipId].timer = setTimeout(function() {
-				doHideTooltip(tipId);
-			}, tippy_state[tipId].options.hidedelay);
+			if (tippy_state[tipId].state == 'displaying') {
+				tippy_state[tipId].state = 'hidden';
+				clearTimeout(tippy_state[tipId].timer);
+			} else {
+				tippy_state[tipId].timer = setTimeout(function() {
+					doHideTooltip(tipId);
+				}, tippy_state[tipId].options.hidedelay);
+			}
 		}
 
 		function doHideTooltip(tipId)
@@ -351,12 +464,12 @@
 	};
 
 	$.fn.tippy.defaults = {
-		showtitle: true, // Should the browser's title attribute be used? Good for accessibility, bad for tooltip visibility.
+		showtitle: false, // Should the browser's title attribute be used? Good for accessibility, bad for tooltip visibility.
 		offsetx: 10, // When position is set to mouse or link, how far should the tooltip be offset left or right? Positive for right, negative for left.
 		offsety: 10, // When position is set to mouse or link, how far should the tooltip be offset up or down? Positive for down, negative for up.
 		hoverpopup: true, // Should the tooltip display on hover? If set to false, tooltip shows on click.
 		multitip: false, // Should it be possible to have multiple tooltips onscreen at once?
-		showdelay: 50, // When showing on hover, how long in ms should it delay before showing the tooltip?
+		showdelay: 100, // When showing on hover, how long in ms should it delay before showing the tooltip?
 		showspeed: 200, // How long in ms should it take the tooltip to fade in?
 		hidedelay: 1000, // When auto hiding, how long in ms should the tooltip be visible before it starts to fade out?
 		hidespeed: 200, // How long in ms should it take the tooltip to fade out?
@@ -366,8 +479,6 @@
 		autoclose: true, // Should the tooltip auto close after a delay?
 		container: false, // What should be the tooltip's parent element? Useful if you want to move it into another element.
 		position: 'link', // fixed, absolute, relative, mouse, link
-		posx: 0, // When position is not mouse or link, what should the x position be? Positive gets assigned to right, negative to left.
-		posy: 0, // When position is not mouse or link, what should the y position be? Positive gets assigned to bottom, negative to top.
 		height: false, // Specify a height for the tooltip
 		width: false, // Specify a width for the tooltip
 		draggable: false, // Should visitors be able to drag the tooltip around? (requires jQuery UI)
