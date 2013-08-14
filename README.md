@@ -4,6 +4,8 @@ A tooltip plugin for jQuery making it easy to create highly customizable, flexib
 
 Tippy is the creation of [Chris Roberts](http://croberts.me/)
 
+Be sure to visit the [Tippy page](http://tippy.croberts.me/)
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [Options](#options)
