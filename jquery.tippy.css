@@ -36,7 +36,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 3px #888, 4px 4px 6px #888;
 
-    z-index: 10000;
+    z-index: 50;
 }
 
 .tippy_header {
@@ -87,8 +87,4 @@
 
 .tippy_body p {
     margin-bottom: .75em;
-}
-
-.tippy_content_container {
-    display: none;
 }

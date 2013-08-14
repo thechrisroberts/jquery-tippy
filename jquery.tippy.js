@@ -46,6 +46,9 @@
 		// How many tooltips are out there?
 		var countTips = 0;
 
+		// Arbitrary counter for bringing tooltips to the front when clicked
+		var topTipIndex = 100;
+
 		// Loop through tooltips and set them up
 		return this.each(function() {
 			countTips++;
@@ -147,6 +150,13 @@
 			}
 
 			tippy_state[tipId].link = tippyLink;
+
+			// See if we are autoshowing. If so, create the tip and show it.
+			if (tippy_state[tipId].options.autoshow) {
+				createTooltip(tipId);
+				positionTip(tipId, event);
+				doShowTooltip(tipId, true);
+			}
 		});
 
 		function createTooltip(tipId)
@@ -157,11 +167,12 @@
 			// Create our tooltip box for this tip. Store it so we can reuse it.
 			tipBox = $('<div></div>')
 				.hide()
-				.css('display', 'none')
 				.css('height', 'auto')
+				.css('display', 'none')
 				.addClass('tippy_tip')
 				.attr('id', tipId + '_box')
-				.mouseover(function() { freezeTooltip(tipId); });
+				.mouseover(function() { freezeTooltip(tipId); })
+				.click(function() { $(this).css('z-index', topTipIndex); topTipIndex++; console.log(topTipIndex); });
 
 			if (typeof tippy_state[tipId].options.class != 'undefined') {
 				tipBox.addClass(tippy_state[tipId].options.class + '_tip')
@@ -401,25 +412,35 @@
 				positionTip(tipId, event);
 
 				tippy_state[tipId].timer = setTimeout(function() {
-					tippy_state[tipId].state = 'showing';
-
-					// Check on a swapimg/swaptitle to use if img/title is set
-					if (typeof tippy_state[tipId].options.swapimg != 'undefined' && typeof tippy_state[tipId].options.img != 'undefined') {
-						console.log("Swapping?");
-						// If we have a swapimg, just fade it in.
-						tippy_state[tipId].swapimg.fadeIn();
-					} else if (typeof tippy_state[tipId].options.swaptitle != 'undefined' && typeof tippy_state[tipId].options.title != 'undefined') {
-						tippy_state[tipId].link.html(tippy_state[tipId].options.swaptitle);
-					}
-
-					if (!tippy_state[tipId].options.multitip && tippy_showing) {
-						doHideTooltip(tippy_showing);
-					}
-
-					tippy_state[tipId].tipBox.fadeIn(tippy_state[tipId].options.showspeed);
-					tippy_showing = tipId;
+					doShowTooltip(tipId, false);
 				}, tippy_state[tipId].options.showdelay);
 			}
+		}
+
+		function doShowTooltip(tipId, instashow)
+		{
+			tippy_state[tipId].state = 'showing';
+
+			// Check on a swapimg/swaptitle to use if img/title is set
+			if (typeof tippy_state[tipId].options.swapimg != 'undefined' && typeof tippy_state[tipId].options.img != 'undefined') {
+				
+				// If we have a swapimg, just fade it in.
+				tippy_state[tipId].swapimg.fadeIn();
+			} else if (typeof tippy_state[tipId].options.swaptitle != 'undefined' && typeof tippy_state[tipId].options.title != 'undefined') {
+				tippy_state[tipId].link.html(tippy_state[tipId].options.swaptitle);
+			}
+
+			if (!tippy_state[tipId].options.multitip && tippy_showing) {
+				doHideTooltip(tippy_showing);
+			}
+
+			if (instashow) {
+				tippy_state[tipId].tipBox.show();
+			} else {
+				tippy_state[tipId].tipBox.fadeIn(tippy_state[tipId].options.showspeed);
+			}
+
+			tippy_showing = tipId;
 		}
 
 		// When the visitor mouses away from the link or the tooltip, start a timer that
@@ -482,6 +503,7 @@
 		height: false, // Specify a height for the tooltip
 		width: false, // Specify a width for the tooltip
 		draggable: false, // Should visitors be able to drag the tooltip around? (requires jQuery UI)
-		dragheader: true // If dragging is enabled should the visitor only be able to drag from the header? If false, user can move the tooltip from any part.
+		dragheader: true, // If dragging is enabled should the visitor only be able to drag from the header? If false, user can move the tooltip from any part.
+		autoshow: false // Should tooltips automatically be displayed when the page is loaded?
 	}
 }(jQuery));

@@ -20,9 +20,11 @@ Tippy is the creation of [Chris Roberts](http://croberts.me/)
 
 Be sure to visit the [Tippy page](http://tippy.croberts.me/) for demos and more details.
 
-1. Inside a jQuery ready or onload block, start Tippy with $('.tippy').tippy();
-2. In your website, create a tooltip via &lt;span class="tippy" data-title="My tooltip">This is a nifty tooltip&lt;/span>
-3. Enjoy!
+1. Include jquery.tippy.js
+2. Include jquery.tippy.css
+3. Start Tippy with $('.tippy').tippy(); use any selector, but .tippy is recommended since it is predefined in the stylesheet.
+4. In your website, create a tooltip via &lt;span class="tippy" data-title="My tooltip">This is a nifty tooltip&lt;/span>
+5. Enjoy!
 
 ## Options
 
@@ -40,6 +42,7 @@ Set per-tooltip, the option goes into the tooltip tag as a data attribute:
 If there is a default value, it is shown in parenthesis. If an option has specific values available, they are listed out with the default showing first.
 
 * multitip (false/true): If true, multiple tooltips can be displayed at once.
+* autoshow (false/true): If true, the tooltip or tooltips will automatically show when the page loads.
 * showtitle (false/true): Whether or not to use the title attribute in links. Good for accessibility, bad for visibility.
 * hoverpopup (true/false): If true, tooltip displays when hovering over the link. If false, tooltip displays when the link is clicked.
 * showdelay (100): Adds a slight delay before displaying the tooltip to prevent popping up tooltips when the mouse moves across the page.
@@ -58,7 +61,7 @@ If there is a default value, it is shown in parenthesis. If an option has specif
 * width: Specify a width for the tooltip. The default is set in jquery.tippy.css.
 * height: Specify a height for the tooltip. The default is set in jquery.tippy.css.
 * draggable (false/true): Allow visitors to drag the tooltip around. Useful when autoclose is false. Requires jQuery UI.
-* dragheader (true/false): If dragging is enabled, sets if dragging should only happen from the tooltip header or if the whole tooltip is draggable.
+* dragheader (true/false): If draging is enabled and this is set to true, tooltip will only be draggable from the header bar. If false, visitors can drag from any part of the tooltip.
 * anchor: Optional CSS selector specifying the link element that will trigger Tippy.
 * title: Sets the text shown on the link and in the header.
 * swaptitle: Alternate title to use when the visitor hovers over the link.

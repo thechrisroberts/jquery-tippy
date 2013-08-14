@@ -101,6 +101,7 @@
 
 				<ul>
 					<li><div class="option">*multitip <span class="default">(false/true)</span></div>: If true, multiple tooltips can be displayed at once.</li>
+					<li><div class="option">autoshow <span class="default">(false/true)</span></div>: If true, the tooltip or tooltips will automatically show when the page loads.</li>
 					<li><div class="option">showtitle <span class="default">(false/true)</span></div>: Whether or not to use the title attribute in links. Good for accessibility, bad for visibility.</li>
 					<li><div class="option">hoverpopup <span class="default">(true/false)</span></div>: If true, tooltip displays when hovering over the link. If false, tooltip displays when the link is clicked.</li>
 					<li><div class="option">showdelay <span class="default">(100)</span></div>: Adds a slight delay before displaying the tooltip to prevent popping up tooltips when the mouse moves across the page.</li>
@@ -119,7 +120,7 @@
 					<li><div class="option">width</div>: Specify a width for the tooltip. The default is set in jquery.tippy.css.</li>
 					<li><div class="option">height</div>: Specify a height for the tooltip. The default is set in jquery.tippy.css.</li>
 					<li><div class="option">draggable <span class="default">(false/true)</span></div>: Allow visitors to drag the tooltip around. Useful when autoclose is false. Requires jQuery UI.</li>
-					<li><div class="option">dragheader <span class="default">(true/false)</span></div>: If dragging is enabled, sets if dragging should only happen from the tooltip header or if the whole tooltip is draggable.</li>
+					<li><div class="option">dragheader <span class="default">(true/false)</span></div>: If draging is enabled and this is set to true, tooltip will only be draggable from the header bar. If false, visitors can drag from any part of the tooltip.</li>
 					<li><div class="option">anchor</div>: Optional CSS selector specifying the link element that will trigger Tippy.</li>
 					<li><div class="option">title</div>: Sets the text shown on the link and in the header.</li>
 					<li><div class="option">swaptitle</div>: Alternate title to use when the visitor hovers over the link.</li>
