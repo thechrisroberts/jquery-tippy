@@ -1,6 +1,6 @@
 /*
  * jQuery Tippy
- * Version 1.1
+ * Version 1.2.1
  * By Chris Roberts, chris@dailycross.net
  * http://croberts.me/
  *
@@ -48,7 +48,7 @@
 
 		// Arbitrary counter for bringing tooltips to the front when clicked
 		var topTipIndex = 100;
-
+		
 		// Loop through tooltips and set them up
 		return this.each(function() {
 			countTips++;
@@ -82,7 +82,7 @@
 			if (typeof tippy_state[tipId].options.class != 'undefined') {
 				tippyLink.addClass(tippy_state[tipId].options.class)
 			}
-
+			
 			if (typeof tippy_state[tipId].options.name != 'undefined') {
 				tippyLink.attr('name', tippy_state[tipId].options.name)
 			}
@@ -173,6 +173,14 @@
 				.attr('id', tipId + '_box')
 				.mouseover(function() { freezeTooltip(tipId); })
 				.click(function() { $(this).css('z-index', topTipIndex); topTipIndex++; console.log(topTipIndex); });
+			
+			tippy_state[tipId].tipBox = tipBox;
+
+			if (!tippy_state[tipId].options.container) {
+				$('#' + tipId).before(tippy_state[tipId].tipBox);
+			} else {
+				$(tippy_state[tipId].options.container).append(tipBox);
+			}
 
 			if (typeof tippy_state[tipId].options.class != 'undefined') {
 				tipBox.addClass(tippy_state[tipId].options.class + '_tip')
@@ -228,8 +236,10 @@
 			tipBody = $('<div></div>')
 				.css('height', 'auto')
 				.addClass('tippy_body')
-				.html($('#' + tipId).html())
 				.appendTo(tipBox);
+			
+			// Move body content
+			$('#' + tipId).appendTo(tipBody).show();
 
 			if (tippy_state[tipId].options.height != false) {
 				tipBody.css("height", tippy_state[tipId].options.height + "px");
@@ -249,14 +259,6 @@
 				} else {
 					tipBody.prepend(tipClose);
 				}
-			}
-
-			tippy_state[tipId].tipBox = tipBox;
-
-			if (!tippy_state[tipId].options.container) {
-				$('#' + tipId).before(tippy_state[tipId].tipBox);
-			} else {
-				$(tippy_state[tipId].options.container).append(tipBox);
 			}
 
 			if (tippy_state[tipId].options.width != false) {
