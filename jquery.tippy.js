@@ -1,6 +1,6 @@
 /*
  * jQuery Tippy
- * Version 1.2.1
+ * Version 1.2.2
  * By Chris Roberts, chris@dailycross.net
  * http://croberts.me/
  *
@@ -170,6 +170,7 @@
 				.css('height', 'auto')
 				.css('display', 'none')
 				.addClass('tippy_tip')
+				.addClass('domTip_Tip')
 				.attr('id', tipId + '_box')
 				.mouseover(function() { freezeTooltip(tipId); })
 				.click(function() { $(this).css('z-index', topTipIndex); topTipIndex++; console.log(topTipIndex); });
@@ -205,7 +206,8 @@
 			if (tippy_state[tipId].options.showheader) {
 				tipHeader = $('<div></div>')
 					.css('height', 'auto')
-					.addClass('tippy_header');
+					.addClass('tippy_header')
+					.addClass('domTip_tipHeader');
 				
 				var headerTitle;
 				if (typeof tippy_state[tipId].options.headertitle != 'undefined') {
@@ -236,6 +238,7 @@
 			tipBody = $('<div></div>')
 				.css('height', 'auto')
 				.addClass('tippy_body')
+				.addClass('domTip_tipBody')
 				.appendTo(tipBox);
 			
 			// Move body content
