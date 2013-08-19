@@ -76,3 +76,4 @@ If there is a default value, it is shown in parenthesis. If an option has specif
 * headerhref: If headerhref is set, the tooltip header text will be a link pointing to this url.
 * showclose (true/false): Whether or not the tooltip have a close link. Usefor for mobile devices or when autoclose is false.
 * closetext ('close'): The text to display for the close link.
+* calcpos ('parent/document'): Calculate the tooltip link position relative to its parent or to the whole document.

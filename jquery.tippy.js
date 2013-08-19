@@ -1,6 +1,6 @@
 /*
  * jQuery Tippy
- * Version 1.2.4
+ * Version 1.2.5
  * By Chris Roberts, chris@dailycross.net
  * http://croberts.me/
  *
@@ -315,9 +315,16 @@
 
 			tippy_positions.tipLinkHeight = $('#' + tipId + '_link').height();
 			
-			// Switched from using jQuery.position() to jQuery.offset()
-			tippy_positions.tipLinkX = $('#' + tipId + '_link').offset().left;
-			tippy_positions.tipLinkY = $('#' + tipId + '_link').offset().top;
+			// document: calculate the position relative to the document.
+			// parent: calculate the position relative to the parent.
+			// Most situations will want parent, but more advanced positioning techniques may want document.
+			if (tippy_state[tipId].options.calcpos == 'document') {
+				tippy_positions.tipLinkX = $('#' + tipId + '_link').offset().left;
+				tippy_positions.tipLinkY = $('#' + tipId + '_link').offset().top;
+			} else {
+				tippy_positions.tipLinkX = $('#' + tipId + '_link').position().left;
+				tippy_positions.tipLinkY = $('#' + tipId + '_link').position().top;
+			}
 		};
 
 		function positionTip(tipId, event)
@@ -511,6 +518,7 @@
 		width: false, // Specify a width for the tooltip
 		draggable: false, // Should visitors be able to drag the tooltip around? (requires jQuery UI)
 		dragheader: true, // If dragging is enabled should the visitor only be able to drag from the header? If false, user can move the tooltip from any part.
-		autoshow: false // Should tooltips automatically be displayed when the page is loaded?
+		autoshow: false, // Should tooltips automatically be displayed when the page is loaded?
+		calcpos: 'parent' // Should the tooltip position be calculated relative to the parent or to the document?
 	}
 }(jQuery));
