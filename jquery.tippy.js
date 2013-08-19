@@ -1,6 +1,6 @@
 /*
  * jQuery Tippy
- * Version 1.2.2
+ * Version 1.2.3
  * By Chris Roberts, chris@dailycross.net
  * http://croberts.me/
  *
@@ -79,8 +79,9 @@
 			tippyLink.addClass('tippy_link')
 				.attr('id', tipId + '_link');
 
-			if (typeof tippy_state[tipId].options.class != 'undefined') {
-				tippyLink.addClass(tippy_state[tipId].options.class)
+			// Using [''] for class variable since .class breaks in ie8
+			if (typeof tippy_state[tipId].options['class'] != 'undefined') {
+				tippyLink.addClass(tippy_state[tipId].options['class'])
 			}
 			
 			if (typeof tippy_state[tipId].options.name != 'undefined') {
@@ -134,9 +135,9 @@
 			}
 
 			if (tippy_state[tipId].options.hoverpopup) {
-				tippyLink.mouseover(function() { showTooltip(tipId, event); });
+				tippyLink.mouseover(function(event) { showTooltip(tipId, event); });
 			} else {
-				tippyLink.click(function() { showTooltip(tipId, event); });
+				tippyLink.click(function(event) { showTooltip(tipId, event); });
 			}
 
 			if (tippy_state[tipId].options.autoclose) {
@@ -154,7 +155,7 @@
 			// See if we are autoshowing. If so, create the tip and show it.
 			if (tippy_state[tipId].options.autoshow) {
 				createTooltip(tipId);
-				positionTip(tipId, event);
+				positionTip(tipId);
 				doShowTooltip(tipId, true);
 			}
 		});
@@ -183,8 +184,9 @@
 				$(tippy_state[tipId].options.container).append(tipBox);
 			}
 
-			if (typeof tippy_state[tipId].options.class != 'undefined') {
-				tipBox.addClass(tippy_state[tipId].options.class + '_tip')
+			// Using [''] for class variable since .class breaks in ie8
+			if (typeof tippy_state[tipId].options['class'] != 'undefined') {
+				tipBox.addClass(tippy_state[tipId].options['class'] + '_tip')
 			}
 
 			switch (tippy_state[tipId].options.position) {
@@ -316,12 +318,10 @@
 			tippy_positions.tipLinkY = $('#' + tipId + '_link').position().top;
 		};
 
-		function positionTip(tipId)
+		function positionTip(tipId, event)
 		{
 			// Grab the box with a shortcut name
 			tipBox = tippy_state[tipId].tipBox;
-
-			// If pos
 
 			// Grab position settings
 			getPositions(tipId, event);
