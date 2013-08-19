@@ -1,6 +1,6 @@
 /*
  * jQuery Tippy
- * Version 1.2.3
+ * Version 1.2.4
  * By Chris Roberts, chris@dailycross.net
  * http://croberts.me/
  *
@@ -314,8 +314,10 @@
 			tippy_positions.viewPageY = event.clientY;
 
 			tippy_positions.tipLinkHeight = $('#' + tipId + '_link').height();
-			tippy_positions.tipLinkX = $('#' + tipId + '_link').position().left;
-			tippy_positions.tipLinkY = $('#' + tipId + '_link').position().top;
+			
+			// Switched from using jQuery.position() to jQuery.offset()
+			tippy_positions.tipLinkX = $('#' + tipId + '_link').offset().left;
+			tippy_positions.tipLinkY = $('#' + tipId + '_link').offset().top;
 		};
 
 		function positionTip(tipId, event)
